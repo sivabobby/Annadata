@@ -49,7 +49,7 @@ public class Taluka extends BaseTest {
 		.when().get(EndPoints.annadata + annadata_GetAllTaluka)
 		.then().statusCode(200).log().all().extract().response();
 		
-		
+		//get the repo data
 		//System.out.println(repo.jsonPath().getString("talukaName"));
 	}
 	
@@ -104,5 +104,5 @@ public class Taluka extends BaseTest {
 		.then().log().all().extract().response();
 	}
 	
-	//System.out.println("something");
+	
 }
