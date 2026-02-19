@@ -103,4 +103,6 @@ public class Taluka extends BaseTest {
 		.post(EndPoints.annadata + annadata_AddBulkDistrict)
 		.then().log().all().extract().response();
 	}
+	
+	//System.out.println("something");
 }
