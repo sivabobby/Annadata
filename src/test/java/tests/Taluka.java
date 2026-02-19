@@ -2,7 +2,10 @@ package tests;
 
 import static io.restassured.RestAssured.given;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.testng.annotations.Test;
 
@@ -16,6 +19,8 @@ public class Taluka extends BaseTest {
 	public String annadata_GetAllTaluka = "GetAllTaluka";
 	public String annadata_GetAllTalukaByCityId = "GetAllTalukaByCityId";
 	public String annadata_GetAllCitiesByDistrictId = "GetAllCitiesByDistrictId";
+	
+	public String annadata_AddBulkDistrict = "AddBulkDistrict";
 	
 	@Test
 	public void AddTaluka() {
@@ -81,4 +86,21 @@ public class Taluka extends BaseTest {
 	
 	}
 
+	@Test
+	public void AddBulkDistrict() {
+		
+		Map <String, Object> district = new HashMap<>();
+		district.put("districtId", "155");
+		district.put("districtName", "Narsipatnam");
+		district.put("stateId", 5);
+		
+		List<Map<String, Object>> districtlist = new ArrayList<>();
+		districtlist.add(district);
+		
+		given().header("Content-type","Application/json")
+		.body(districtlist)
+		.when()
+		.post(EndPoints.annadata + annadata_AddBulkDistrict)
+		.then().log().all().extract().response();
+	}
 }
