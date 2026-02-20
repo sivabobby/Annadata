@@ -13,6 +13,7 @@ import org.testng.annotations.Test;
 public class Customer extends BaseTest{
 	
 	public String annadata_GetAllCustomer = "GetAllCustomer";
+	public String annadata_GetCustomerById = "GetCustomerById";
 	
 	@Test
 	public void GetAllCustomers(){
@@ -24,6 +25,16 @@ public class Customer extends BaseTest{
 		
 		List<String> Names = response.jsonPath().getList("data.name");
 		System.out.println(Names);
+	}
+	
+	@Test
+	public void GetCustomerBy() {
+		Response response = given()
+				.header("content-type", "application/json")
+				.queryParam("Id", 380)
+				.when()
+				.get(EndPoints.annadata_bigbasket + annadata_GetCustomerById)
+				.then().log().all().extract().response();
 	}
 
 }
