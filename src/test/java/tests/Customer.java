@@ -35,6 +35,8 @@ public class Customer extends BaseTest{
 				.when()
 				.get(EndPoints.annadata_bigbasket + annadata_GetCustomerById)
 				.then().log().all().extract().response();
+		
+		System.out.println("Name :" + response.jsonPath().getString("data.name"));
 	}
 
 }
