@@ -5,7 +5,6 @@ import org.testng.annotations.Test;
 import base.BaseTest;
 import constants.EndPoints;
 import io.restassured.response.Response;
-import io.restassured.response.ValidatableResponse;
 import pojo.PojoTest;
 
 import static io.restassured.RestAssured.*;
