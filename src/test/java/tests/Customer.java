@@ -6,6 +6,8 @@ import io.restassured.response.Response;
 
 import static io.restassured.RestAssured.*;
 
+import java.util.List;
+
 import org.testng.annotations.Test;
 
 public class Customer extends BaseTest{
@@ -14,13 +16,14 @@ public class Customer extends BaseTest{
 	
 	@Test
 	public void GetAllCustomers(){
-		Response responce = given().header("content-type","application/json")
+		Response response = given().header("content-type","application/json")
 				.when()
-				.get(EndPoints.annadata_bigbasket + annadata_GetAllCustomer)
-				.then()
-				.log().all().statusCode(200).extract().response();
+				.get(EndPoints.annadata_bigbasket + annadata_GetAllCustomer);
+				//.then()
+				//.log().all().statusCode(200).extract().response();
 		
-		//System.out.println(responce);
+		List<String> Names = response.jsonPath().getList("data.name");
+		System.out.println(Names);
 	}
 
 }
